@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{setspace}
+\usepackage{color}
+\definecolor{oucrimson}{RGB}{132,22,23}
+\usepackage[colorlinks=true,
+            urlcolor=oucrimson,
+            linkcolor=black,
+            citecolor=black]{hyperref}
+%\doublespacing
+
+% --------------------------------------------------
+\title{Problem Set 4}
+\author{Tristan Winkle}
+\date{}
+
+% --------------------------------------------------
+\begin{document}
+\maketitle
+% --------------------------------------------------
+
+% --------------------------------------------------
+\section{Questions and Responses}
+% --------------------------------------------------
+
+\begin{enumerate} 
+	\item What data sources might you scrape?
+        \begin{itemize}
+            \item[-] Developing web scraping skills has unlocked many new data opportunities for my research interests. A risk-free application involves scraping \href{https://reliefweb.int/}{ReliefWeb} to collect granular disaster declarations in developing countries. As a second option, I intend to attempt to scrape \href{https://www.clearancejobs.com/}{ClearanceJobs} to construct a dataset that captures human capital dynamics within mercenary labor markets.
+        \end{itemize}
+
+    \item[5(d).] What type of an object is mydf\$date?
+        \begin{itemize}
+            \item[-] Character
+        \end{itemize}
+
+    \item[6.7.] Verify that the two dataframe are different types: type class(df1) and class(df). What is the class of each? 
+        \begin{itemize}
+            \item[-] Gemini Pro 3.1 (since OSCER would not run sparklyr package):  The class of df1 is a local R dataframe (``tbl\_df"). The class of df is a "tbl\_spark".
+        \end{itemize}
+
+    \item[6.8.] Are the column names any different across the two objects? If so, why might that be?
+        \begin{itemize}
+            \item[-] They should be different. The iris df separates column names with ``." and Spark translates them to ``\_". 
+        \end{itemize}
+\end{enumerate}
+
+% --------------------------------------------------
+\end{document}
+% --------------------------------------------------
