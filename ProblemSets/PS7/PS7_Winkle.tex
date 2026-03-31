@@ -1,0 +1,201 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{color}
+\definecolor{oucrimson}{RGB}{132,22,23}
+\usepackage[colorlinks=true,
+            urlcolor=oucrimson,
+            linkcolor=black,
+            citecolor=black]{hyperref}
+%\doublespacing
+
+
+
+% --------------------------------------------------
+\title{Problem Set 6}
+\author{Tristan Winkle}
+\date{}
+
+% --------------------------------------------------
+\begin{document}
+\maketitle
+% --------------------------------------------------
+
+% --------------------------------------------------
+\section{Questions and Responses}
+% --------------------------------------------------
+
+\subsection*{6}
+
+\begin{table}[!htbp]
+\centering
+\caption{Summary Statistics}
+\vspace{0.5em}
+\begin{minipage}{0.82\textwidth}
+\centering
+\begin{tabular}{lrrrrrrr}
+\toprule
+Variable & N & Pct. Missing & Mean & SD & Min & Median & Max \\
+\midrule
+Log Wage & 1669 & 25.12 & 1.63 & 0.39 & 0.00 & 1.66 & 2.26 \\
+Years of Schooling     & 2229 & 0.00  & 13.10 & 2.52 & 0.00 & 12.00 & 18.00 \\
+Tenure  & 2229 & 0.00  & 5.97  & 5.51 & 0.00 & 3.75  & 25.92 \\
+Age     & 2229 & 0.00  & 39.15 & 3.06 & 34.00 & 39.00 & 46.00 \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.5em}
+\footnotesize
+\end{minipage}
+\end{table}
+
+\noindent The missing rate for log wage is 25.12\%. Log wage is likely to be MAR, where missing wages may be related to observed characteristics such as schooling, age, marital status, or tenure. MNAR is also possible if missingness depends on the unobserved wage itself, but that cannot be established from these results alone. MCAR can be ruled out completely. 
+
+\pagebreak 
+
+\subsection*{7}
+
+\begin{table}[!htbp]
+\centering
+\caption{Comparison of Imputation Methods}
+\vspace{0.5em}
+\begin{minipage}{\textwidth}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\toprule
+ & Complete Cases & Mean Imputation & Regression Imputation & Multiple Imputation \\
+\midrule
+Intercept 
+& 0.534*** 
+& 0.708*** 
+& 0.534*** 
+& 0.633*** \\
+& (0.146) 
+& (0.116) 
+& (0.112) 
+& (0.160) \\
+
+Years of Schooling ($\beta_1$) 
+& 0.062*** 
+& 0.050*** 
+& 0.062*** 
+& 0.060*** \\
+& (0.005) 
+& (0.004) 
+& (0.004) 
+& (0.005) \\
+
+Not College Graduate 
+& 0.145*** 
+& 0.168*** 
+& 0.145*** 
+& 0.116** \\
+& (0.034) 
+& (0.026) 
+& (0.025) 
+& (0.037) \\
+
+Tenure 
+& 0.050*** 
+& 0.038*** 
+& 0.050*** 
+& 0.049*** \\
+& (0.005) 
+& (0.004) 
+& (0.004) 
+& (0.005) \\
+
+Tenure Squared 
+& -0.002*** 
+& -0.001*** 
+& -0.002*** 
+& -0.001** \\
+& (0.000) 
+& (0.000) 
+& (0.000) 
+& (0.000) \\
+
+Age 
+& 0.000 
+& 0.000 
+& 0.000 
+& -0.001 \\
+& (0.003) 
+& (0.002) 
+& (0.002) 
+& (0.003) \\
+
+Single 
+& -0.022 
+& -0.027* 
+& -0.022+ 
+& -0.017 \\
+& (0.018) 
+& (0.014) 
+& (0.013) 
+& (0.017) \\
+
+\midrule
+Observations 
+& 1669 
+& 2229 
+& 2229 
+& 2229 \\
+
+Imputations 
+&  
+&  
+&  
+& 5 \\
+
+$R^2$ 
+& 0.208 
+& 0.147 
+& 0.277 
+& 0.228 \\
+
+Adjusted $R^2$ 
+& 0.206 
+& 0.145 
+& 0.275 
+& 0.226 \\
+
+
+\bottomrule
+\end{tabular}%
+}
+\vspace{0.5em}
+
+\footnotesize
+\textit{Notes:} Standard errors are reported in parentheses. p$<0.10$, * p$<0.05$, ** p$<0.01$, *** p$<0.001$.
+\end{minipage}
+\end{table}
+
+\noindent The estimated return to schooling varies across the four methods, but all of them understate the true value of 0.093. The complete-case estimate is 0.062, while mean imputation produces the smallest estimate, 0.050. Regression imputation yields an estimate of 0.062, which is nearly identical to the complete-case result, and multiple imputation gives 0.060.
+
+The main pattern is that mean imputation attenuates the schooling coefficient the most. Complete-case estimation also appears biased downward, suggesting that dropping observations with missing wages is not innocuous in this setting. The last two methods use observed covariates to impute missing wages, but they differ in an important way. Regression imputation fills in missing values with fitted values from the complete-case model, so it largely reproduces the same relationship already estimated from complete cases and may understate uncertainty. Multiple imputation is more credible because it incorporates uncertainty across several imputations rather than treating a single predicted value as known. Even so, its estimate of 0.060 still falls well below the true value. Thus, it improves the procedure conceptually without fully eliminating bias in this application.
+
+Overall, the results show that mean imputation performs poorly, complete-case estimation is also biased downward, and multiple imputation is the most defensible of the four approaches even though it does not fully recover the true return to schooling.
+
+\pagebreak
+
+\subsection*{8}
+
+\noindent My project asks whether local electricity disruptions increase civil unrest. I use ACLED event data to measure protests and riots and NASA Black Marble nighttime lights data to proxy for electricity reliability. I accessed the Black Marble data through NASA’s API (see late submitted PS5 if interested).
+
+My initial empirical design will be a staggered DiD with a binary unrest outcome, followed by a PPML specification using event counts. After that, I want to explore more flexible robustness approaches, especially DDML, depending on whether the data support them. I am also interested in whether methods covered later in the course can improve the design further.
+
+The main empirical constraint right now is measurement. Nighttime lights are a practical proxy for electricity disruptions, but they do not directly identify verified blackouts. As a result, any estimates will need to be interpreted as the effects of sharp local declines in luminosity rather than confirmed outage events. Data acquisition from NASA is also incredibly slow given the size of the files. 
+
+
+
+% --------------------------------------------------
+\end{document}
+% --------------------------------------------------
