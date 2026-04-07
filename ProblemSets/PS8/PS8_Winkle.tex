@@ -1,0 +1,137 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{color}
+\definecolor{oucrimson}{RGB}{132,22,23}
+\usepackage[colorlinks=true,
+            urlcolor=oucrimson,
+            linkcolor=black,
+            citecolor=black]{hyperref}
+%\doublespacing
+
+
+
+% --------------------------------------------------
+\title{Problem Set 8}
+\author{Tristan Winkle}
+\date{}
+
+% --------------------------------------------------
+\begin{document}
+\maketitle
+% --------------------------------------------------
+
+% --------------------------------------------------
+\section{Questions and Responses}
+% --------------------------------------------------
+
+\subsection*{5}
+
+\noindent The closed-form estimates are extremely close to the true $\beta$ values: $\hat\beta_{OLS}$ closely recovers the true parameter vector, with only very small deviations.
+
+\subsection*{7}
+
+\noindent The L-BFGS and Nelder-Mead estimates are nearly identical, but L-BFGS matches the closed-form OLS solution more precisely.  
+
+\subsection*{9}
+
+The estimates of $\hat\beta$ are very similar to the true $\beta$: OLS, gradient descent, L-BFGS, and MLE are essentially identical, and Nelder-Mead is also extremely close. Across coefficients, the estimated values differ from the true values by a few thousandths.
+
+\pagebreak
+
+\begin{table}[!htbp]
+\centering
+\caption{Comparison of OLS Estimates}
+\vspace{0.5em}
+\begin{minipage}{\textwidth}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccc}
+\toprule
+& True $\beta$ & Closed-Form & Gradient Descent & L-BFGS & Nelder-Mead & MLE \\
+\midrule
+$X_1$   & 1.500  & 1.501  & 1.501  & 1.501  & 1.501  & 1.501 \\
+$X_2$   & -1.000 & -1.001 & -1.001 & -1.001 & -1.001 & -1.001 \\
+$X_3$   & -0.250 & -0.252 & -0.252 & -0.252 & -0.252 & -0.252 \\
+$X_4$   & 0.750  & 0.749  & 0.749  & 0.749  & 0.749  & 0.749 \\
+$X_5$   & 3.500  & 3.501  & 3.501  & 3.501  & 3.501  & 3.501 \\
+$X_6$   & -2.000 & -2.001 & -2.001 & -2.001 & -2.001 & -2.001 \\
+$X_7$   & 0.500  & 0.499  & 0.499  & 0.499  & 0.499  & 0.499 \\
+$X_8$   & 1.000  & 1.003  & 1.003  & 1.003  & 1.003  & 1.003 \\
+$X_9$   & 1.250  & 1.247  & 1.247  & 1.247  & 1.247  & 1.247 \\
+$X_{10}$ & 2.000 & 2.001  & 2.001  & 2.001  & 2.001  & 2.001 \\
+\midrule
+$\sigma$ & 0.500 &  &  &  &  & 0.500 \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{0.5em}
+
+\footnotesize
+\end{minipage}
+\end{table}
+
+\pagebreak
+
+\begin{table}[!htbp]
+\centering
+\caption{OLS Estimates}
+\label{tab:ols_estimates}
+\vspace{0.3em}
+\begin{minipage}{0.70\textwidth}
+\centering
+\small
+\begin{tabular}{lc}
+\toprule
+& (1) \\
+\midrule
+$X_1$     & 1.501 \\
+          & (0.002) \\
+$X_2$     & -1.001 \\
+          & (0.002) \\
+$X_3$     & -0.252 \\
+          & (0.002) \\
+$X_4$     & 0.749 \\
+          & (0.002) \\
+$X_5$     & 3.501 \\
+          & (0.002) \\
+$X_6$     & -2.001 \\
+          & (0.002) \\
+$X_7$     & 0.499 \\
+          & (0.002) \\
+$X_8$     & 1.003 \\
+          & (0.002) \\
+$X_9$     & 1.247 \\
+          & (0.002) \\
+$X_{10}$  & 2.001 \\
+          & (0.002) \\
+\midrule
+Observations   & 100{,}000 \\
+$R^2$          & 0.991 \\
+Adj.\ $R^2$    & 0.991 \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.3em}
+\begin{minipage}{\textwidth}
+\footnotesize
+\emph{Notes:} This table reports coefficients from the easy OLS regression of $Y$ on $X_1$ through $X_{10}$. Standard errors are reported in parentheses. All coefficients are statistically significant at the 1 percent level.
+\end{minipage}
+\end{minipage}
+\end{table}
+
+
+
+
+
+
+
+% --------------------------------------------------
+\end{document}
+% --------------------------------------------------
