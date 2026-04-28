@@ -1,0 +1,135 @@
+\documentclass[12pt]{article}
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{setspace}
+\usepackage{bbm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{pdfpages}
+\usepackage[authoryear]{natbib}
+\usepackage{url}
+\usepackage[flushleft]{threeparttable}
+\usepackage[english]{babel}
+\usepackage{pdflscape}
+
+\definecolor{oucrimson}{RGB}{132,22,23}
+\usepackage[colorlinks=true,
+            urlcolor=oucrimson,
+            linkcolor=black,
+            citecolor=black]{hyperref}
+
+\usepackage[all]{hypcap}
+\usepackage{breakurl}
+
+\doublespacing
+
+\begin{document}
+
+\begin{singlespace}
+\title{Infrastructure Failure and Civil Unrest\thanks{Acknowledgements:}}
+\end{singlespace}
+
+\author{Tristan Winkle\thanks{Department of Economics, University of Oklahoma.\
+E-mail~address:~\href{mailto:student.name@ou.edu}{tristan.w.winkle-1@ou.edu}}}
+
+% \date{\today}
+\date{This version: April 28, 2026}
+
+\maketitle
+
+\begin{abstract}
+\begin{singlespace}
+\noindent Reliable electricity infrastructure is central to economic activity, but much less is known about whether infrastructure failure also affects social and political stability. This paper studies whether electricity-related disruption contributes to civil unrest. I combine nighttime luminosity data from NASA Black Marble with geocoded protest and riot events from ACLED to construct a granular grid-level panel for Ghana.
+\end{singlespace}
+
+\end{abstract}
+\vfill{}
+
+\pagebreak{}
+
+\section{Introduction}\label{sec:intro}
+
+Reliable electricity infrastructure is central to economic activity, yet severe power shortages and blackouts remain common across developing economies. Development research has traditionally studied electrification’s economic effects on growth and household welfare \citep{lee2020householdelectrification}, human capital \citep{lipscomb2013electrificationbrazil, abbasi2022roadselectricityjobs}, and labor market participation \citep{dinkelman2011ruralelectrification}. Extensive work also shows that unreliable supply is costly: outages reduce firms’ productivity, output, and revenues \citep{allcott2016electricityindia, cole2018poweroutagesfirms, abeberese2021electricityghana}, and they weaken labor markets by raising unemployment and slowing job creation \citep{mensah2024electricityjobs}. It is therefore well established that electricity reliability matters for economic performance. Much less is understood, however, about whether infrastructure failure also shapes social and political stability.
+
+A separate body of work in conflict economics shows that adverse economic shocks can drive instability by depressing wages, weakening employment opportunities, and lowering the opportunity cost of violence or unrest. This literature studies shocks tied to commodity prices \citep{besley2008warsstatecapacity, dube2013commodityconflict, bazzi2014resourceinsurgency}, weather \citep{miguel2004economicshocksconflict, burke2015climateconflict, burke2024newevidenceclimateconflict}, agricultural disruption \citep{biscaye2025agriculturalshocksconflict}, and institutional conditions under which conflict emerges \citep{acemoglu2010persistencecivilwars,blattman2010civilwar}. Yet because this work overwhelmingly focuses on rural, agricultural, or resource-dependent settings, the mechanics of instability triggered by infrastructure failure remain relatively underexamined. If electricity is a critical input into production, employment, mobility, and daily life, then prolonged supply disruption may plausibly generate the kinds of localized economic and social stress that contribute to unrest.
+
+In this paper, I bridge the importance of infrastructure and the economics of conflict by studying whether sustained electricity failure contributes to civil unrest. The paper differs from much of the economics of electricity by focusing not on expanding access, but on reliability failure. It also expands the set of shocks studied in conflict economics by asking whether infrastructure breakdown itself can destabilize social order. This shifts the discussion from infrastructure-as-growth to infrastructure-as-stability.
+
+\section{Data}\label{sec:data}
+
+\begin{itemize}
+    \item This paper combines data on nighttime luminosity and civil unrest for Ghana from 2012 to 2024. 
+
+    \item The electricity-related measure is constructed from NASA Black Marble VNP46A2, which provides gridded daily moonlight-adjusted and atmospherically corrected nighttime lights \citep{roman2018blackmarble}.
+
+    \item To measure unrest, I use ACLED event data on protests and riots in Ghana over the same period. Event locations are spatially matched to grid cells and then collapsed to the [LEVEL]-level, yielding counts of protests, riots, and total unrest for each municipality-week. 
+
+    \item Grid cells measurements at $0.1\degree \times 0.1\degree$ (11 km $\times$ 11 km). 
+
+    \item Treatment definition under construction, but options I am working through:
+        \begin{itemize}
+            \item Percent-drop from recent moving average
+            \item Sustained-drop treatment
+            \item First-difference shock
+            \item Residualized shock after place and calendar effects
+        \end{itemize}
+\end{itemize}
+
+\section{Empirical Strategy}\label{sec:methods}
+\begin{itemize}
+    \item BJS-DiD \citep{borusyak2024eventstudy, roth2023didreview}
+
+\begin{equation}
+\label{eq:1} Y_{ict} = \alpha + \beta D_{ict} + \gamma_{ct} + \mu_i + \varepsilon_{ict}
+\end{equation}
+
+    \begin{itemize}
+        \item $Y_{ict}$ is an unrest indicator (for now) for cell $i$ in country $c$ in year $t$.
+    
+        \item $D_{ict}$ is a treatment indicator.
+    
+        \item $\gamma_{ct}$ are fixed effects for country-years that control for the variation at the country-level over time in the intensity of infrastructure failure and civil unrest. 
+    
+        \item  $\mu_i$ are cell fixed effects controlling for time-invariant cell characteristics. 
+    
+        \item $\beta$ captures the effect of infrastructure failure on civil unrest.
+    \end{itemize}
+
+    \item Alternative empirical designs and estimators:
+        \begin{itemize}
+            \item PPML for count data outcomes
+            \item Instrumental variables using weather
+            \item RDD spatial discontinuities
+        \end{itemize}
+\end{itemize}
+
+\section{Results}\label{sec:results}
+Under construction.
+
+\section{Conclusion}\label{sec:conclusion}
+Under construction.
+
+\pagebreak{}
+
+\vfill
+\pagebreak{}
+\begin{spacing}{1.0}
+\bibliographystyle{jpe}
+\bibliography{PS11_Winkle.bib}
+\addcontentsline{toc}{section}{References}
+\end{spacing}
+
+\pagebreak
+
+\section{Appendix}
+Under construction. 
+
+% --------------------------------------------------
+\end{document}
+% --------------------------------------------------
